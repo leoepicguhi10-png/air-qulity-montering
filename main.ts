@@ -1,0 +1,13 @@
+OLED.init(128, 64)
+OLED.writeString("DUST(ug/m3):")
+OLED.writeNum(Environment.ReadDust(DigitalPin.P9, AnalogPin.P10))
+OLED.newLine()
+OLED.writeStringNewLine("TEMPERATURE:")
+OLED.writeNum(Environment.octopus_BME280(Environment.BME280_state.BME280_temperature_C))
+OLED.newLine()
+OLED.writeStringNewLine("HUMIDITY:")
+OLED.writeNumNewLine(Environment.octopus_BME280(Environment.BME280_state.BME280_humidity))
+basic.pause(6000)
+basic.forever(function () {
+    OLED.clear()
+})
